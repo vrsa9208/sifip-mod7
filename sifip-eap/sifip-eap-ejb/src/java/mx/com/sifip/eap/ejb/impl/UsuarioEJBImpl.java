@@ -5,6 +5,7 @@
  */
 package mx.com.sifip.eap.ejb.impl;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import mx.com.sifip.bo.UsuarioBO;
 import mx.com.sifip.bo.exception.SifipBoException;
@@ -19,15 +20,50 @@ import mx.com.sifip.model.jpa.Usuario;
 @Stateless
 public class UsuarioEJBImpl implements UsuarioEJB{
     
-    private final UsuarioBO bo;
+    private Class clase;
     
     public UsuarioEJBImpl(){
-        bo = new UsuarioBOImpl();
+        clase = this.getClass();
     }
 
     @Override
-    public Usuario add(Usuario usuario) throws SifipBoException {
-        return bo.registrar(usuario);
+    public Usuario registrar(Usuario usuario) throws SifipBoException {
+        //Aquí haría la llamada a bo. Dado que no está configurado el Data Source, solo mandaré un mensaje
+        System.out.println("Llamada a " + clase.getSimpleName() + ".registrar()");
+        return usuario;
+    }
+
+    @Override
+    public void desactivar(Usuario usuario) throws SifipBoException {
+        //Aquí haría la llamada a bo. Dado que no está configurado el Data Source, solo mandaré un mensaje
+        System.out.println("Llamada a " + clase.getSimpleName() + ".desactivar()");
+    }
+
+    @Override
+    public void activar(Usuario usuario) throws SifipBoException {
+        //Aquí haría la llamada a bo. Dado que no está configurado el Data Source, solo mandaré un mensaje
+        System.out.println("Llamada a " + clase.getSimpleName() + ".activar()");
+    }
+
+    @Override
+    public Usuario actualizar(Usuario usuario) throws SifipBoException {
+        //Aquí haría la llamada a bo. Dado que no está configurado el Data Source, solo mandaré un mensaje
+        System.out.println("Llamada a " + clase.getSimpleName() + ".actualizar()");
+        return usuario;
+    }
+
+    @Override
+    public List<Usuario> getAll() throws SifipBoException {
+        //Aquí haría la llamada a bo. Dado que no está configurado el Data Source, solo mandaré un mensaje
+        System.out.println("Llamada a " + clase.getSimpleName() + ".getAll()");
+        return null;
+    }
+
+    @Override
+    public Usuario getById(int id) throws SifipBoException {
+        //Aquí haría la llamada a bo. Dado que no está configurado el Data Source, solo mandaré un mensaje
+        System.out.println("Llamada a " + clase.getSimpleName() + ".getById()");
+        return null;
     }
     
 }

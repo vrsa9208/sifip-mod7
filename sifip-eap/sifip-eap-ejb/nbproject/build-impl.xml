@@ -784,9 +784,6 @@ exists or setup the property manually. For example like this:
         <ant antfile="${project.sifip-bo-jpa}/build.xml" inheritall="false" target="jar">
             <property name="deploy.on.save" value="false"/>
         </ant>
-        <ant antfile="${project.sifip-dao-jpa}/build.xml" inheritall="false" target="jar">
-            <property name="deploy.on.save" value="false"/>
-        </ant>
         <ant antfile="${project.sifip-facade}/build.xml" inheritall="false" target="jar">
             <property name="deploy.on.save" value="false"/>
         </ant>
@@ -796,9 +793,6 @@ exists or setup the property manually. For example like this:
     </target>
     <target depends="init" if="dist.ear.dir" name="-deps-ear-jar" unless="no.deps">
         <ant antfile="${project.sifip-bo-jpa}/build.xml" inheritall="false" target="jar">
-            <property name="deploy.on.save" value="false"/>
-        </ant>
-        <ant antfile="${project.sifip-dao-jpa}/build.xml" inheritall="false" target="jar">
             <property name="deploy.on.save" value="false"/>
         </ant>
         <ant antfile="${project.sifip-facade}/build.xml" inheritall="false" target="jar">
@@ -820,26 +814,22 @@ exists or setup the property manually. For example like this:
     <target depends="compile,-library-inclusion-in-archive-weblogic,-library-inclusion-in-archive-by-user" name="library-inclusion-in-archive"/>
     <target if="is.jars.in.ejbjar" name="-library-inclusion-in-archive-by-user">
         <copyfiles files="${reference.sifip-model-jpa.jar}" todir="${build.classes.dir}"/>
-        <copyfiles files="${reference.sifip-dao-jpa.jar}" todir="${build.classes.dir}"/>
         <copyfiles files="${reference.sifip-bo-jpa.jar}" todir="${build.classes.dir}"/>
         <copyfiles files="${reference.sifip-facade.jar}" todir="${build.classes.dir}"/>
     </target>
     <target if="is.server.weblogic" name="-library-inclusion-in-archive-weblogic">
         <basename file="${reference.sifip-model-jpa.jar}" property="manifest.reference.sifip-model-jpa.jar"/>
-        <basename file="${reference.sifip-dao-jpa.jar}" property="manifest.reference.sifip-dao-jpa.jar"/>
         <basename file="${reference.sifip-bo-jpa.jar}" property="manifest.reference.sifip-bo-jpa.jar"/>
         <basename file="${reference.sifip-facade.jar}" property="manifest.reference.sifip-facade.jar"/>
         <manifest file="${build.ear.classes.dir}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Extension-List" value="jar-1 jar-2 jar-3 jar-4 "/>
+            <attribute name="Extension-List" value="jar-1 jar-2 jar-3 "/>
             <attribute name="jar-1-Extension-Name" value="${manifest.reference.sifip-model-jpa.jar}"/>
-            <attribute name="jar-2-Extension-Name" value="${manifest.reference.sifip-dao-jpa.jar}"/>
-            <attribute name="jar-3-Extension-Name" value="${manifest.reference.sifip-bo-jpa.jar}"/>
-            <attribute name="jar-4-Extension-Name" value="${manifest.reference.sifip-facade.jar}"/>
+            <attribute name="jar-2-Extension-Name" value="${manifest.reference.sifip-bo-jpa.jar}"/>
+            <attribute name="jar-3-Extension-Name" value="${manifest.reference.sifip-facade.jar}"/>
         </manifest>
     </target>
     <target depends="compile" name="library-inclusion-in-manifest">
         <copyfiles files="${reference.sifip-model-jpa.jar}" todir="${dist.ear.dir}/lib"/>
-        <copyfiles files="${reference.sifip-dao-jpa.jar}" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${reference.sifip-bo-jpa.jar}" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${reference.sifip-facade.jar}" todir="${dist.ear.dir}/lib"/>
         <manifest file="${build.ear.classes.dir}/META-INF/MANIFEST.MF" mode="update"/>
@@ -1226,7 +1216,6 @@ exists or setup the property manually. For example like this:
             -->
     <target depends="init" name="deps-clean" unless="no.deps">
         <ant antfile="${project.sifip-bo-jpa}/build.xml" inheritall="false" target="clean"/>
-        <ant antfile="${project.sifip-dao-jpa}/build.xml" inheritall="false" target="clean"/>
         <ant antfile="${project.sifip-facade}/build.xml" inheritall="false" target="clean"/>
         <ant antfile="${project.sifip-model-jpa}/build.xml" inheritall="false" target="clean"/>
     </target>

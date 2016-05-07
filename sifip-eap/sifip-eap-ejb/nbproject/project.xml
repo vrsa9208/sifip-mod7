@@ -6,7 +6,6 @@
             <name>sifip-eap-ejb</name>
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <included-library dirs="200">reference.sifip-model-jpa.jar</included-library>
-            <included-library dirs="200">reference.sifip-dao-jpa.jar</included-library>
             <included-library dirs="200">reference.sifip-bo-jpa.jar</included-library>
             <included-library dirs="200">reference.sifip-facade.jar</included-library>
             <source-roots>
@@ -19,14 +18,6 @@
         <references xmlns="http://www.netbeans.org/ns/ant-project-references/1">
             <reference>
                 <foreign-project>sifip-bo-jpa</foreign-project>
-                <artifact-type>jar</artifact-type>
-                <script>build.xml</script>
-                <target>jar</target>
-                <clean-target>clean</clean-target>
-                <id>jar</id>
-            </reference>
-            <reference>
-                <foreign-project>sifip-dao-jpa</foreign-project>
                 <artifact-type>jar</artifact-type>
                 <script>build.xml</script>
                 <target>jar</target>
